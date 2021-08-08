@@ -1,10 +1,10 @@
 name: Test and release
 
-# Run the workflow when a Pull Request is opened or when changes are pushed to master on 'xdy/xdy-module-template' (i.e. don't run on forks)
+# Run the workflow when a Pull Request is opened or when changes are pushed to main on 'xdy/xdy-module-template' (i.e. don't run on forks)
 on:
   pull_request:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   test:
@@ -44,7 +44,7 @@ jobs:
       #run: npm test
 
   release:
-    # Only release on push to master on xdy/xdy-module-template
+    # Only release on push to main on xdy/xdy-module-template
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main') && github.repository == 'xdy/xdy-module-template'
     runs-on: ubuntu-latest
     # Waits for test jobs for each Node.js version to complete
